@@ -22,11 +22,11 @@ The MATLAB files are the submitted group code. Bloomberg-derived workbooks and T
 - With the exercise's test volatility `sigma = 7%`, Monte Carlo gives about **55.0** and agrees with Black-Scholes when both methods use the same volatility input.
 - The simplified one-maturity VSTOXX calculation gives about **12.69**, versus an observed value around **15.04** on the valuation date.
 - EURO STOXX 50 and VSTOXX log returns have a sample correlation of about **-0.79** over the supplied history.
-- The pathwise callable-bond valuation is about **102.65-102.67**. Applying the trigger to the average simulated index path instead gives about **120.65-120.69**, which is a useful illustration of why a nonlinear indicator payoff cannot generally be evaluated on the mean path.
+- The pathwise callable-bond valuation is about **102.65-102.67**. Applying the trigger to the average simulated index path instead gives about **120.65-120.69**; with an indicator-style payoff, evaluating the payoff on an average path is not equivalent to averaging pathwise payoffs.
 
 ## Figures
 
-The figures in `figures/` are analytical outputs from the submitted work. Bloomberg screenshots from the report are deliberately excluded.
+The repository tracks **all 16 analytical figure panels** retained from the submitted report. The full index is in [`figures/README.md`](figures/README.md). The figures below are a compact selection.
 
 ### Options and volatility
 
@@ -42,15 +42,11 @@ The figures in `figures/` are analytical outputs from the submitted work. Bloomb
 
 ### EUR OIS
 
-![EUR OIS discount curve](figures/eur_ois_discount_curve.png)
-
 ![EUR OIS zero curve](figures/eur_ois_zero_curve.png)
 
 ### Callable bond
 
 ![Pathwise callable-bond distribution](figures/callable_bond_pathwise_bootstrap.png)
-
-![Callable-bond method comparison](figures/callable_bond_method_comparison.png)
 
 ## Notes I would keep in mind in an interview
 
@@ -77,7 +73,7 @@ matlab/
 └── esercizio_VIII.m
 
 data/README.md
-figures/
+figures/README.md
 README.md
 ```
 
