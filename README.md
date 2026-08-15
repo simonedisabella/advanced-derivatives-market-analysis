@@ -15,7 +15,7 @@ The MATLAB files are the submitted group code. Bloomberg-derived workbooks and T
 7. **EUR OIS curve** — recursive discount-factor bootstrap and continuously compounded zero rates.
 8. **Callable credit-equity-linked bond** — 20,000 simulated equity paths, OIS discounting, survival probabilities and a comparison between triggers applied to the average path and triggers evaluated path by path.
 
-## Results worth discussing
+## Selected results
 
 - Quadratic-fit implied volatility at the target strike: about **13.36%**.
 - Black-Scholes price at `K = 5753`: about **94.22**.
@@ -48,7 +48,7 @@ The repository tracks **all 16 analytical figure panels** retained from the subm
 
 ![Pathwise callable-bond distribution](figures/callable_bond_pathwise_bootstrap.png)
 
-## Notes I would keep in mind in an interview
+## Technical notes and limitations
 
 - **Quadratic fit vs interpolation.** The submitted code fits a quadratic to OTM-call total volatility. The requested strike sits just below the OTM-call subset used in that fit, so the evaluation is technically a short extrapolation, not strict interpolation.
 - **VSTOXX.** This is the classroom one-maturity construction requested by the assignment, not a claim to reproduce the full production index methodology.
@@ -56,7 +56,7 @@ The repository tracks **all 16 analytical figure panels** retained from the subm
 - **Euribor tenor inconsistency in the assignment.** The input instructions say to download **Euribor 3M**, while question (vi) asks for **Euribor 6M**. The supplied group dataset and submitted code use `EURIBOR3M.xlsx`; this repository states that explicitly instead of presenting the 3M analysis as a 6M result.
 - **Normal vs Variance Gamma.** The submitted work compares both fitted distributions graphically and reports normality diagnostics. The repository does not claim that Variance Gamma is formally proven superior by a dedicated likelihood-ratio or out-of-sample test.
 - **OIS bootstrap.** The implementation uses simplified tenor/day-count mappings and log-linear interpolation of discount factors at intermediate dates.
-- **Callable bond.** The GBM uses a constant risk-free drift input derived from the short OIS rate, while the bootstrapped OIS curve is used to discount cash flows. The pathwise trigger method is the economically meaningful Monte Carlo implementation; the average-path calculation is retained as the comparison requested by the assignment.
+- **Callable bond.** The GBM uses a constant risk-free drift input derived from the short OIS rate, while the bootstrapped OIS curve is used to discount cash flows. Pathwise trigger evaluation is the appropriate implementation for this nonlinear payoff; the average-path calculation is retained as the comparison requested by the assignment.
 
 ## Repository layout
 
@@ -79,6 +79,6 @@ README.md
 
 ## Authorship
 
-The original assignment was completed by **Simone D'Isabella, Francesco Melocchi, Alberto Preti and Giulio Mazzarella**. This repository is my public copy of the group work; it does not imply sole authorship.
+The original assignment was completed by **Simone D'Isabella, Francesco Melocchi, Alberto Preti and Giulio Mazzarella**. This repository is a public copy of the group work and does not imply sole authorship.
 
 Academic coursework, not a production pricing library or a live trading system.
